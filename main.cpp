@@ -2,16 +2,21 @@
 
 #include <string>
 #include <iostream>
-#include <algorithm>
+#include <numeric>
+
+std::string add(std::string &reverse, char element) {
+  return reverse + element;
+}
 
 bool isPalindrome(std::string input) {
   std::string reverse = "";
-  for_each(input.rbegin(), input.rend(), [&](char element) { reverse += element; });
-  return input == reverse;
+  return input == std::accumulate(input.rbegin(), input.rend(), reverse, add);
 }
 
 int main() {
   std::string input = "bab";
   std::cout << isPalindrome(input) << std::endl;
+  std::string input2 = "alma";
+  std::cout << isPalindrome(input2) << std::endl;
   return 0;
 }
