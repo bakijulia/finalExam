@@ -2,12 +2,11 @@
 
 #include <string>
 #include <iostream>
+#include <algorithm>
 
 bool isPalindrome(std::string input) {
   std::string reverse = "";
-  for (int i = input.length() - 1; i >= 0; i--) {
-    reverse += input[i];
-  }
+  for_each(input.rbegin(), input.rend(), [&](char element) { reverse += element; });
   return input == reverse;
 }
 
